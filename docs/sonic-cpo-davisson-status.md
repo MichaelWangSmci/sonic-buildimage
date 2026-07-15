@@ -1,33 +1,35 @@
 # SONiC CPO 最新發展追蹤
 
 > GitHub snapshot：2026-07-15 01:00 UTC  
-> 相對前一版（2026-07-13 01:15 UTC）已重新核對 PR / issue / review / checks / default-branch code。  
-> 搜尋範圍：`sonic-net` 主要 repos（SONiC、platform-common、platform-daemons、buildimage、utilities、mgmt、linux-kernel）。
+> 搜尋範圍：`sonic-net` 主要 repos（SONiC、platform-common、platform-daemons、buildimage、utilities、mgmt、linux-kernel），包含 PR、issue、review、checks、linked work 與 default-branch code。
 
-## 摘要（相對 07-13 的變化）
+## 摘要
 
-| 項目 | 07-13 | 07-15 |
-|---|---|---|
-| [SONiC #2211](https://github.com/sonic-net/SONiC/pull/2211) Port mapping / `cpo.json` HLD | Open | **Merged**（07-13 16:26） |
-| [buildimage #28077](https://github.com/sonic-net/sonic-buildimage/pull/28077) topology parser | 舊名痕跡 / CI pass | 已對齊 `cpo.json` + `get_cpo_data()`；**Azure + dualtor kvm 失敗** |
-| [platform-common #700](https://github.com/sonic-net/sonic-platform-common/pull/700) ChassisBase hooks | 讀 `optical_devices.json` / `construct_optical_devices` | **已對齊** `cpo.json` + `construct_cpo_devices`；仍 draft、Azure fail |
-| [buildimage #28324](https://github.com/sonic-net/sonic-buildimage/pull/28324) Mellanox Joint Mode | 用 `optical_devices.json` | **仍用** `optical_devices.json`（唯一明顯介面分叉） |
-| [utilities #4647](https://github.com/sonic-net/sonic-utilities/pull/4647) ELS CLI | Open、approved | **Merged**（07-13 16:26） |
-| [buildimage #28311](https://github.com/sonic-net/sonic-buildimage/pull/28311) 202605 platform-common pointer | Open、CI fail | **Merged**（07-14 09:13）；202605 已指到 #689 |
-| [buildimage #28140](https://github.com/sonic-net/sonic-buildimage/pull/28140) Bailly cherry-pick | Approved、CI fail | Approved、**CI 全過**；待 merge |
-| [mgmt #25881](https://github.com/sonic-net/sonic-mgmt/pull/25881) CPO SFP API test | Open、changes requested | **Closed（未合併）**、仍 draft |
-
-目前觀察：
-
-- 追蹤工作項目：約 25（同前一版核心集合）
+- 追蹤工作項目：約 25
 - 存在 draft、conflict、CI 或 review 阻塞：約 16
-- 活躍硬體線：Bailly、Davisson（library only）、NVIDIA / Mellanox
+- 活躍硬體線：
+  - Bailly
+  - Davisson（common library only；尚無公開 vendor consumer）
+  - NVIDIA / Mellanox
 
-## Cross-repository interface mismatch（已縮小）
+已落地的關鍵規格與 release 節點：
 
-[SONiC #2211](https://github.com/sonic-net/SONiC/pull/2211) 已合併，`cpo.json` / `get_cpo_data()` / `construct_cpo_devices` 成為正式規格。
+- [SONiC #2211](https://github.com/sonic-net/SONiC/pull/2211)：`cpo.json` port mapping HLD 已合併
+- [utilities #4647](https://github.com/sonic-net/sonic-utilities/pull/4647)：ELS CLI show 已合併
+- [buildimage #28311](https://github.com/sonic-net/sonic-buildimage/pull/28311)：202605 已消費 Bailly CMIS common backport（#689）
 
-通用實作鏈現已**名稱對齊**，但尚未合併：
+仍未形成可依序合併的完整實作鏈：
+
+- 通用 topology：[buildimage #28077](https://github.com/sonic-net/sonic-buildimage/pull/28077)、[platform-common #700](https://github.com/sonic-net/sonic-platform-common/pull/700) 名稱已對齊 HLD，但分別卡在 CI / draft
+- `xcvrd`：[SONiC #2444](https://github.com/sonic-net/SONiC/pull/2444)、[daemons #843](https://github.com/sonic-net/sonic-platform-daemons/pull/843) 仍為 draft
+- NVIDIA Joint Mode：[buildimage #28324](https://github.com/sonic-net/sonic-buildimage/pull/28324) 仍使用 `optical_devices.json`
+- Bailly 202605 後續：[buildimage #28109](https://github.com/sonic-net/sonic-buildimage/pull/28109)、[#28140](https://github.com/sonic-net/sonic-buildimage/pull/28140) 已 approved 且 CI 全過，待 merge
+
+## Cross-repository interface mismatch
+
+[SONiC #2211](https://github.com/sonic-net/SONiC/pull/2211) 已將 `cpo.json`、`get_cpo_data()`、`construct_cpo_devices` 訂為正式規格。
+
+通用實作鏈名稱已對齊，但尚未合併：
 
 - [sonic-buildimage #28077](https://github.com/sonic-net/sonic-buildimage/pull/28077) — `get_cpo_data()` 解析 `cpo.json`
 - [sonic-platform-common #700](https://github.com/sonic-net/sonic-platform-common/pull/700) — `ChassisBase.construct_cpo_devices(cpo_data)`
@@ -36,7 +38,7 @@
 
 - [sonic-buildimage #28324](https://github.com/sonic-net/sonic-buildimage/pull/28324) — Mellanox draft 仍新增 / 讀取 `optical_devices.json`
 
-> 結論：通用 port-topology 介面衝突已從「三方分叉」收斂成「通用鏈對齊、NVIDIA draft 尚未跟進」。
+這些 PR 尚未形成介面一致、可以依序合併的完整實作鏈。
 
 ## 主要技術方向
 
