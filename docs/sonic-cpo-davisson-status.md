@@ -163,7 +163,7 @@
 | sonic-utilities | [#4647](https://github.com/sonic-net/sonic-utilities/pull/4647) | 2026-07-13 | ELS CLI show（sfputil / sfpshow） |
 | sonic-mgmt | [#22892](https://github.com/sonic-net/sonic-mgmt/pull/22892)、[#23609](https://github.com/sonic-net/sonic-mgmt/pull/23609)、[#23508](https://github.com/sonic-net/sonic-mgmt/pull/23508) | 2026-04 | CPO presence 與 reboot-cause tests |
 
-## Recent GitHub activity（07-13 → 07-15）
+## Recent GitHub activity
 
 | 時間 | 項目 | 事件 | 實質影響 |
 |---|---|---|---|
@@ -194,32 +194,30 @@
 
 ## 結論
 
-**沒有實質改變。**
-
-Davisson TH6 的 common API、factory 與 memory map 仍已合併，也已由 `sonic-buildimage/master` 引入。  
-公開程式碼中仍**找不到** vendor platform 建立：
+Davisson TH6 的 common API、factory 與 memory map 已合併，也已由 `sonic-buildimage/master` 引入。  
+公開程式碼中**找不到** vendor platform 建立：
 
 ```python
 CpoHardwareInfo(oe_id=OeId.BROADCOM_DAVISSON, ...)
 ```
 
-`BROADCOM_DAVISSON` code search（sonic-net）仍只命中 `sonic-platform-common` 的 enum / factory / unit tests。
+`BROADCOM_DAVISSON` code search（sonic-net）只命中 `sonic-platform-common` 的 enum / factory / unit tests。
 
-因此現況仍是：
+因此現況是：
 
 > Davisson 的 common library support 已完成，但從平台 topology、物件建立、`xcvrd` runtime、DOM、CLI 到實體硬體驗證的 end-to-end 路徑尚未完成。
 
-## 相對 07-13 對 Davisson 的間接影響
+## 相關通用進度與 Davisson 缺口
 
-| 變化 | 對 Davisson 的意義 |
+| 通用進度 | 對 Davisson 的意義 |
 |---|---|
-| SONiC #2211 合併 | Davisson 可依正式 `cpo.json` 規格做 topology，不再等 HLD |
-| buildimage #28077 / common #700 對齊但未合併 | Davisson platform consumer 仍缺通用 parser / Chassis hook |
-| utilities #4647 合併 | ELS CLI 通用能力前進；仍非 Davisson-specific wiring |
-| xcvrd #2444 / #843 未合併 | Davisson runtime / DOM 路徑仍不可用 |
-| 無新的 Davisson PR | 沒有新的 vendor SKU / HLD / backport |
+| SONiC #2211 已合併 | 可依正式 `cpo.json` 規格做 topology |
+| buildimage #28077 / common #700 對齊但未合併 | platform consumer 仍缺通用 parser / Chassis hook |
+| utilities #4647 已合併 | ELS CLI 通用能力可用；尚非 Davisson-specific wiring |
+| xcvrd #2444 / #843 未合併 | runtime / DOM 路徑仍不可用 |
+| 無公開 Davisson vendor / HLD / 202605 backport PR | SKU wiring 與 release 路徑尚未啟動 |
 
-## 已完成的基礎工作（未變）
+## 已完成的基礎工作
 
 ### 通用 CPO API
 
