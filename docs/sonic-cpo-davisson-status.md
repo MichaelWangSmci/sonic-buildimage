@@ -135,17 +135,31 @@
 | [common #677](https://github.com/sonic-net/sonic-platform-common/issues/677) | Adjacent | Issue open | 05-26 | CMIS memory maps by revision；非 CPO 專屬。 |
 | [buildimage #26243](https://github.com/sonic-net/sonic-buildimage/issues/26243) | Adjacent | Issue open | 05-11 | 一般 CMIS firmware timing；非 CPO 專屬。 |
 
-## 已合併的基礎能力（增量）
-
-前一版已列項目之外，本週新增：
+## 已合併的基礎能力
 
 | Repo | PR | 合併日期 | 已落地能力 |
 |---|---|---|---|
+| SONiC | [#2183](https://github.com/sonic-net/SONiC/pull/2183) | 2026-05-11 | CMIS banking HLD |
 | SONiC | [#2211](https://github.com/sonic-net/SONiC/pull/2211) | 2026-07-13 | CPO port mapping HLD；`cpo.json` 正式規格 |
-| sonic-utilities | [#4647](https://github.com/sonic-net/sonic-utilities/pull/4647) | 2026-07-13 | ELS CLI show（sfputil / sfpshow） |
+| sonic-linux-kernel | [#473](https://github.com/sonic-net/sonic-linux-kernel/pull/473) | 2026-05-04 | optoe 支援超過 8 lanes 的 CMIS banks |
+| sonic-platform-common | [#632](https://github.com/sonic-net/sonic-platform-common/pull/632)、[#640](https://github.com/sonic-net/sonic-platform-common/pull/640)、[#668](https://github.com/sonic-net/sonic-platform-common/pull/668) | 03-16～05-20 | Bank parameter、完整 banking 與 `max_banks_size` |
+| sonic-platform-common | [#667](https://github.com/sonic-net/sonic-platform-common/pull/667)、[#678](https://github.com/sonic-net/sonic-platform-common/pull/678)、[#684](https://github.com/sonic-net/sonic-platform-common/pull/684) | 05-26～06-08 | CMIS page refactor、ELSFP memory map 與 API |
+| sonic-platform-common | [#676](https://github.com/sonic-net/sonic-platform-common/pull/676)、[#682](https://github.com/sonic-net/sonic-platform-common/pull/682) | 2026-06-10 | CPO identifier 與 CpoBase/OE/ELSFP API factory |
+| sonic-platform-common | [#672](https://github.com/sonic-net/sonic-platform-common/pull/672) | 2026-06-05 | Bailly CMIS/API base |
+| sonic-platform-common | [#692](https://github.com/sonic-net/sonic-platform-common/pull/692) | 2026-06-26 | Broadcom Davisson TH6 CPO |
+| sonic-platform-common | [#690](https://github.com/sonic-net/sonic-platform-common/pull/690) | 2026-07-07 | Bailly RLM DOM 與 joint-mode paths |
+| sonic-platform-common | [#689](https://github.com/sonic-net/sonic-platform-common/pull/689) | 2026-07-08 | Bailly CMIS common-side 202605 backport |
+| sonic-platform-daemons | [#823](https://github.com/sonic-net/sonic-platform-daemons/pull/823) | 2026-06-10 | `xcvrd` CMIS state machine 接受 CPO identifier |
+| sonic-buildimage | [#24371](https://github.com/sonic-net/sonic-buildimage/pull/24371)、[#24439](https://github.com/sonic-net/sonic-buildimage/pull/24439) | 2025-11 | Mellanox CPO platform API 與 shared label-port mapping |
+| sonic-buildimage | [#26998](https://github.com/sonic-net/sonic-buildimage/pull/26998) | 2026-05-13 | Micas M2-W6940-128X1-FR4 初始 CPO platform tree |
+| sonic-buildimage | [#27517](https://github.com/sonic-net/sonic-buildimage/pull/27517) | 2026-06-03 | Broadcom Bailly TH5 platform |
+| sonic-buildimage | [#27808](https://github.com/sonic-net/sonic-buildimage/pull/27808) | 2026-06-25 | Bailly RLM DOM、laser info 與 cpoutil |
+| sonic-buildimage | [#28118](https://github.com/sonic-net/sonic-buildimage/pull/28118) | 2026-06-27 | master 引入 Davisson #692 與最新 SFF-8024 codes |
+| sonic-buildimage | [#28292](https://github.com/sonic-net/sonic-buildimage/pull/28292) | 2026-07-09 | master 傳播 Bailly RLM / joint-mode (#690) |
 | sonic-buildimage | [#28311](https://github.com/sonic-net/sonic-buildimage/pull/28311) | 2026-07-14 | 202605 消費 Bailly CMIS common backport (#689) |
-
-既有基礎能力（未變）仍包括：CMIS banking、ELSFP maps/API、`CpoBase`/factory、Davisson #692、Bailly platform/RLM、`xcvrd` CPO identifier (#823) 等。
+| sonic-utilities | [#4333](https://github.com/sonic-net/sonic-utilities/pull/4333)、[#4447](https://github.com/sonic-net/sonic-utilities/pull/4447) | 03-15～04-10 | CPO EEPROM 識別與 page-failure 容錯 |
+| sonic-utilities | [#4647](https://github.com/sonic-net/sonic-utilities/pull/4647) | 2026-07-13 | ELS CLI show（sfputil / sfpshow） |
+| sonic-mgmt | [#22892](https://github.com/sonic-net/sonic-mgmt/pull/22892)、[#23609](https://github.com/sonic-net/sonic-mgmt/pull/23609)、[#23508](https://github.com/sonic-net/sonic-mgmt/pull/23508) | 2026-04 | CPO presence 與 reboot-cause tests |
 
 ## Recent GitHub activity（07-13 → 07-15）
 
