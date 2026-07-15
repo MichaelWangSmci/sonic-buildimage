@@ -243,7 +243,7 @@ CpoHardwareInfo(oe_id=OeId.BROADCOM_DAVISSON, ...)
 
 本 repo（buildimage）目前可見的 `cpo.json` / `get_cpo_json_data()` 路徑屬於 **Bailly / Micas FR4**（`m2-w6940-128x1-fr4`），不是 Davisson consumer。
 
-## 目前缺少的部分（更新後）
+## 目前缺少的部分
 
 1. **Vendor platform consumer** — 仍未找到  
 2. **Davisson `cpo.json` topology** — 仍未找到；通用規格 (#2211) 已就緒，parser (#28077) 未合併  
@@ -276,7 +276,7 @@ CpoHardwareInfo(oe_id=OeId.BROADCOM_DAVISSON, ...)
 | Common CPO base API | 已合併 |
 | Davisson hardware ID / OE / ELSFP / memmap | 已合併 |
 | Unit tests / buildimage master integration | 已完成 |
-| 通用 `cpo.json` HLD | **已合併（新）** |
+| 通用 `cpo.json` HLD | 已合併 |
 | 通用 parser / Chassis hook | 對齊中、**未合併** |
 | TH6 platform groundwork | 已合併，與 Davisson wiring 關係未明確 |
 | Vendor platform consumer | 未找到 |
